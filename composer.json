@@ -1,0 +1,17 @@
+{
+  "name": "seidor/redsys-magento2-module",
+  "description": "Adobe Commerce module that enables Redsys payment integration for PaaS and on-premises deployments.",
+  "type": "magento2-module",
+  "license": "proprietary",
+  "require": {
+    "magento/module-out-of-process-payment-methods": "*"
+  },
+  "autoload": {
+    "files": [
+      "app/code/Seidor/Redsys/registration.php"
+    ],
+    "psr-4": {
+      "Seidor\\Redsys\\": "app/code/Seidor/Redsys/"
+    }
+  }
+}

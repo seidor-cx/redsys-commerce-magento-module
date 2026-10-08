@@ -1,0 +1,49 @@
+<div class="payment-method"
+     data-bind="css: {'_active': (getCode() == isChecked())}">
+
+    <div class="payment-method-title field choice">
+        <input type="radio"
+               name="payment[method]"
+               class="radio"
+               data-bind="
+                   attr: {'id': getCode()},
+                   value: getCode(),
+                   checked: isChecked,
+                   click: selectPaymentMethod,
+                   visible: isRadioButtonVisible()
+               "/>
+
+        <label class="label"
+               data-bind="attr: {'for': getCode()}">
+            <span data-bind="text: getTitle()"></span>
+        </label>
+    </div>
+
+    <div class="payment-method-content">
+
+        <!-- ko if: isInSite() -->
+        <div id="redsys-payment-form">
+            <div id="redsys-payment-error"
+                 style="display: none; color:red;">
+            </div>
+
+            <div id="card-form"></div>
+            <input type="hidden" id="token"/>
+            <input type="hidden" id="errorCode"/>
+        </div>
+        <!-- /ko -->
+
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button class="action primary checkout"
+                        type="button"
+                        data-bind="
+                            click: placeOrder,
+                            enable: isPlaceOrderActionAllowed()
+                        ">
+                    <span data-bind="i18n: 'Place Order'"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
